@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ namespace UploadImage.Controllers
     {
         private readonly ImageDbContext _context;
 
-        public ImageModelsController(ImageDbContext context)
+        public ImageModelsController(ImageDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
         }
@@ -57,6 +58,11 @@ namespace UploadImage.Controllers
         {
             if (ModelState.IsValid)
             {
+                ///para guaradar a imagem
+
+                string wwwRootPath = 
+
+
                 _context.Add(imageModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
