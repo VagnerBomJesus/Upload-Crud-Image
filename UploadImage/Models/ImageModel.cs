@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -16,8 +18,12 @@ namespace UploadImage.Models
         public string Title { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
+
+        [DisplayName("Image Name")]
         public string ImageIname { get; set; }
 
-
+        [NotMapped]
+        [DisplayName("Update File")]
+        public IFormFile ImageFile { get; set; }
     }
 }
