@@ -13,10 +13,12 @@ namespace UploadImage.Controllers
     public class ImageModelsController : Controller
     {
         private readonly ImageDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public ImageModelsController(ImageDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: ImageModels
