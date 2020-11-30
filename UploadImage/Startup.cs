@@ -68,7 +68,7 @@ namespace UploadImage
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=ImageModels}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

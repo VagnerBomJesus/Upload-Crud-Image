@@ -14,7 +14,10 @@ namespace UploadImage.Models
         public int ImageId { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string Title { get; set; }
+
         [Column(TypeName = "nvarchar(100)")]
         public string ImageIname { get; set; }
+
+
     }
 }
