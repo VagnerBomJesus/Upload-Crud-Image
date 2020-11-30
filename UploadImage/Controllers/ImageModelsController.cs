@@ -156,6 +156,13 @@ namespace UploadImage.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var imageModel = await _context.Images.FindAsync(id);
+            //delete Image from wwwRoot/Image
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", imageModel.ImageIname);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+            //delete the Record
             _context.Images.Remove(imageModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
