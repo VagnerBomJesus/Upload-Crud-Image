@@ -53,7 +53,7 @@ namespace UploadImage.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ImageId,Title,ImageIname")] ImageModel imageModel)
+        public async Task<IActionResult> Create([Bind("ImageId,Title,ImageFile")] ImageModel imageModel)
         {
             if (ModelState.IsValid)
             {
