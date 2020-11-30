@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -60,11 +61,19 @@ namespace UploadImage.Controllers
         {
             if (ModelState.IsValid)
             {
-                ///para guaradar a imagem
+                ///para guaradar a imagem na pasta wwwRoot/Imagem
 
-                string wwwRootPath = 
-
-
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
+                string extension = Path.GetExtension(imageModel.ImageFile.FileName);
+                imageModel.ImageIname =  fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await imageModel.ImageFile.CopyToAsync(fileStream);
+                }
+                    
+                 //Insert record   
                 _context.Add(imageModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
