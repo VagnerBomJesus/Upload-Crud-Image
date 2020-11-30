@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UploadImage.Models
 {
-    public class ImageDbContex: DbContext
+    public class ImageDbContext: DbContext
     {
-        public ImageDbContex (DbContextOptions<ImageDbContex> options): base(options) { }
+        public ImageDbContext (DbContextOptions<ImageDbContext> options): base(options) { }
 
         public DbSet<ImageModel> Images { get; set; }
     }

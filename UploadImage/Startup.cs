@@ -12,6 +12,7 @@ using UploadImage.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UploadImage.Models;
 
 namespace UploadImage
 {
@@ -34,6 +35,11 @@ namespace UploadImage
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            services.AddDbContext<ImageDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ConnectionImage")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
